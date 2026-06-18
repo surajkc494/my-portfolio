@@ -1,0 +1,82 @@
+/* Responsive refinements */
+
+@media (max-width: 1200px) {
+  .section-title {
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+  }
+}
+
+@media (max-width: 992px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-copy {
+    max-width: 100%;
+  }
+
+  .hero-meta {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .project-grid,
+  .cert-grid,
+  .profile-grid,
+  .achievement-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar .navbar-collapse {
+    backdrop-filter: blur(24px);
+  }
+
+  .hero-panel,
+  .hero-card {
+    border-radius: 24px;
+  }
+
+  .hero-stack {
+    gap: 32px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-actions a {
+    width: 100%;
+  }
+
+  .team-grid,
+  .skill-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-title {
+    font-size: clamp(2.6rem, 9vw, 3.6rem);
+  }
+
+  .section-eyebrow {
+    font-size: 0.72rem;
+  }
+
+  .hero-card {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 420px) {
+  .contact-info,
+  .hero-meta {
+    flex-direction: column;
+  }
+  .hero-meta .meta-pill {
+    width: 100%;
+  }
+}

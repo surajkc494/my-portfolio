@@ -1,0 +1,52 @@
+<svg width="1400" height="900" viewBox="0 0 1400 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="dotgrid" width="34" height="34" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.4" fill="#7C6FF0" fill-opacity="0.22"/>
+    </pattern>
+    <radialGradient id="blobA" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7C6FF0" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#7C6FF0" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="blobB" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#34E0B0" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#34E0B0" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur1" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="60"/>
+    </filter>
+    <filter id="blur2" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="45"/>
+    </filter>
+  </defs>
+
+  <rect width="1400" height="900" fill="url(#dotgrid)"/>
+
+  <circle cx="1080" cy="160" r="320" fill="url(#blobA)" filter="url(#blur1)"/>
+  <circle cx="220" cy="680" r="260" fill="url(#blobB)" filter="url(#blur2)"/>
+
+  <g stroke="#7C6FF0" stroke-opacity="0.28" stroke-width="1.4" fill="none">
+    <path d="M 40 120 L 260 120 L 320 180 L 560 180"/>
+    <path d="M 900 60 L 900 160 L 1020 280 L 1020 420"/>
+    <path d="M 1180 40 L 1180 140 L 1300 260"/>
+    <path d="M 60 500 L 200 500 L 260 560 L 260 700"/>
+    <path d="M 460 760 L 640 760 L 700 820"/>
+  </g>
+
+  <g fill="#34E0B0" fill-opacity="0.7">
+    <circle cx="260" cy="120" r="3.2"/>
+    <circle cx="560" cy="180" r="3.2"/>
+    <circle cx="1020" cy="280" r="3.2"/>
+    <circle cx="1020" cy="420" r="3.2"/>
+    <circle cx="1300" cy="260" r="3.2"/>
+    <circle cx="260" cy="700" r="3.2"/>
+    <circle cx="700" cy="820" r="3.2"/>
+  </g>
+
+  <g fill="#7C6FF0" fill-opacity="0.55">
+    <circle cx="40" cy="120" r="2.6"/>
+    <circle cx="900" cy="60" r="2.6"/>
+    <circle cx="1180" cy="40" r="2.6"/>
+    <circle cx="60" cy="500" r="2.6"/>
+    <circle cx="460" cy="760" r="2.6"/>
+  </g>
+</svg>

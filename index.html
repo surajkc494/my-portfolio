@@ -29,6 +29,35 @@ html[data-theme="light"]{
   --warn:#B87413; --warn-soft:rgba(184,116,19,0.10);
   --shadow: 0 20px 50px -25px rgba(20,25,40,0.22);
 }
+.arch-toggle{
+  display:inline-flex; align-items:center; gap:6px;
+  font-family:'JetBrains Mono',monospace; font-size:12.5px; color:var(--accent);
+  background:none; border:none; cursor:pointer; padding:6px 0; margin-bottom:14px;
+  transition:color .2s ease;
+}
+.arch-toggle:hover{color:var(--accent2);}
+.arch-toggle .arch-caret{display:inline-block; transition:transform .3s ease; font-size:10px;}
+.arch-toggle[aria-expanded="true"] .arch-caret{transform:rotate(180deg);}
+.arch-wrap{
+  display:grid; grid-template-rows:0fr; overflow:hidden;
+  transition:grid-template-rows .5s ease;
+}
+.arch-wrap.open{grid-template-rows:1fr;}
+.arch-inner{min-height:0; overflow:hidden;}
+.arch-diagram{
+  width:100%; height:auto; padding:16px 4px 20px;
+  background:var(--surface-2); border:1px solid var(--border); border-radius:var(--radius-sm);
+  margin-bottom:16px; overflow-x:auto;
+}
+.arch-node-box{fill:var(--surface); stroke:var(--border); stroke-width:1.5; transition:stroke .2s;}
+.arch-node-text{fill:var(--text); font-family:'Inter',sans-serif; font-size:11px; font-weight:500;}
+.arch-arrow{stroke:var(--accent); stroke-width:1.5; fill:none;}
+.arch-arrowhead{fill:var(--accent);}
+.arch-node-box.arch-accent2{stroke:var(--accent2);}
+
+@media(max-width:480px){
+  .arch-diagram svg{ min-width:520px; }
+}
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{
@@ -659,6 +688,32 @@ footer{border-top:1px solid var(--border); padding:44px 0 30px;}
             <li>Clean UI/UX components across the full request flow</li>
             <li>Deployed on Vercel for high uptime and optimized delivery</li>
           </ul>
+          <button class="arch-toggle" data-target="arch-llm" aria-expanded="false">
+            <span class="arch-label">View architecture</span> <span class="arch-caret">▾</span>
+          </button>
+          <div class="arch-wrap" id="arch-llm"><div class="arch-inner">
+          <div class="arch-diagram">
+          <svg viewBox="0 0 700 110" role="img" aria-label="User input flows through the React frontend to the Node.js API, then to the LLM API, and the response renders back in the UI." xmlns="http://www.w3.org/2000/svg">
+            <defs><marker id="archArrowHead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arch-arrowhead" d="M0,0 L10,5 L0,10 Z"/></marker></defs>
+            <rect class="arch-node-box" x="10" y="35" width="120" height="42" rx="8"/>
+            <text class="arch-node-text" x="70" y="52" text-anchor="middle">User</text>
+            <text class="arch-node-text" x="70" y="66" text-anchor="middle">Input</text>
+            <line class="arch-arrow" x1="130" y1="56" x2="168" y2="56" marker-end="url(#archArrowHead)"/>
+            <rect class="arch-node-box" x="170" y="35" width="130" height="42" rx="8"/>
+            <text class="arch-node-text" x="235" y="52" text-anchor="middle">React</text>
+            <text class="arch-node-text" x="235" y="66" text-anchor="middle">Frontend</text>
+            <line class="arch-arrow" x1="300" y1="56" x2="338" y2="56" marker-end="url(#archArrowHead)"/>
+            <rect class="arch-node-box" x="340" y="35" width="130" height="42" rx="8"/>
+            <text class="arch-node-text" x="405" y="52" text-anchor="middle">Node.js</text>
+            <text class="arch-node-text" x="405" y="66" text-anchor="middle">API</text>
+            <line class="arch-arrow" x1="470" y1="56" x2="508" y2="56" marker-end="url(#archArrowHead)"/>
+            <rect class="arch-node-box arch-accent2" x="510" y="35" width="120" height="42" rx="8"/>
+            <text class="arch-node-text" x="570" y="52" text-anchor="middle">LLM API</text>
+            <text class="arch-node-text" x="570" y="66" text-anchor="middle">Response</text>
+            <path class="arch-arrow" d="M570,80 C570,100 235,100 235,80" fill="none" marker-end="url(#archArrowHead)"/>
+          </svg>
+          </div>
+          </div></div>
           <div class="pc-tags"><span>React</span><span>Node.js</span><span>LLM API</span><span>Vercel</span><span>JavaScript</span></div>
         </div>
 
@@ -674,6 +729,31 @@ footer{border-top:1px solid var(--border); padding:44px 0 30px;}
             <li>Trained and deployed the anomaly detection pipeline end to end</li>
             <li>Prediction API integrated with a responsive React frontend</li>
           </ul>
+          <button class="arch-toggle" data-target="arch-spasht" aria-expanded="false">
+            <span class="arch-label">View architecture</span> <span class="arch-caret">▾</span>
+          </button>
+          <div class="arch-wrap" id="arch-spasht"><div class="arch-inner">
+          <div class="arch-diagram">
+          <svg viewBox="0 0 700 110" role="img" aria-label="Healthcare claims data feeds into the Isolation Forest model for anomaly scoring, then the Flask prediction API sends results to the React dashboard for real-time flagging." xmlns="http://www.w3.org/2000/svg">
+            <defs><marker id="archArrowHead2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arch-arrowhead" d="M0,0 L10,5 L0,10 Z"/></marker></defs>
+            <rect class="arch-node-box" x="10" y="35" width="140" height="42" rx="8"/>
+            <text class="arch-node-text" x="80" y="52" text-anchor="middle">Healthcare</text>
+            <text class="arch-node-text" x="80" y="66" text-anchor="middle">Claims Data</text>
+            <line class="arch-arrow" x1="150" y1="56" x2="188" y2="56" marker-end="url(#archArrowHead2)"/>
+            <rect class="arch-node-box arch-accent2" x="190" y="35" width="150" height="42" rx="8"/>
+            <text class="arch-node-text" x="265" y="52" text-anchor="middle">Isolation Forest</text>
+            <text class="arch-node-text" x="265" y="66" text-anchor="middle">Anomaly Scoring</text>
+            <line class="arch-arrow" x1="340" y1="56" x2="378" y2="56" marker-end="url(#archArrowHead2)"/>
+            <rect class="arch-node-box" x="380" y="35" width="140" height="42" rx="8"/>
+            <text class="arch-node-text" x="450" y="52" text-anchor="middle">Flask</text>
+            <text class="arch-node-text" x="450" y="66" text-anchor="middle">Prediction API</text>
+            <line class="arch-arrow" x1="520" y1="56" x2="558" y2="56" marker-end="url(#archArrowHead2)"/>
+            <rect class="arch-node-box" x="560" y="35" width="130" height="42" rx="8"/>
+            <text class="arch-node-text" x="625" y="52" text-anchor="middle">React</text>
+            <text class="arch-node-text" x="625" y="66" text-anchor="middle">Dashboard</text>
+          </svg>
+          </div>
+          </div></div>
           <div class="pc-tags"><span>Python</span><span>Scikit-learn</span><span>Flask</span><span>React</span><span>Isolation Forest</span></div>
         </div>
 
@@ -689,6 +769,31 @@ footer{border-top:1px solid var(--border); padding:44px 0 30px;}
             <li>OpenCV preprocessing for normalization and noise reduction</li>
             <li>92% character recognition accuracy across 15+ fonts</li>
           </ul>
+          <button class="arch-toggle" data-target="arch-ocr" aria-expanded="false">
+            <span class="arch-label">View architecture</span> <span class="arch-caret">▾</span>
+          </button>
+          <div class="arch-wrap" id="arch-ocr"><div class="arch-inner">
+          <div class="arch-diagram">
+          <svg viewBox="0 0 700 110" role="img" aria-label="Raw images go through OpenCV preprocessing, then contrastive pretraining with no labels, then a PyTorch encoder, producing character recognition output." xmlns="http://www.w3.org/2000/svg">
+            <defs><marker id="archArrowHead3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arch-arrowhead" d="M0,0 L10,5 L0,10 Z"/></marker></defs>
+            <rect class="arch-node-box" x="10" y="35" width="120" height="42" rx="8"/>
+            <text class="arch-node-text" x="70" y="52" text-anchor="middle">Raw</text>
+            <text class="arch-node-text" x="70" y="66" text-anchor="middle">Images</text>
+            <line class="arch-arrow" x1="130" y1="56" x2="168" y2="56" marker-end="url(#archArrowHead3)"/>
+            <rect class="arch-node-box" x="170" y="35" width="140" height="42" rx="8"/>
+            <text class="arch-node-text" x="240" y="52" text-anchor="middle">OpenCV</text>
+            <text class="arch-node-text" x="240" y="66" text-anchor="middle">Preprocessing</text>
+            <line class="arch-arrow" x1="310" y1="56" x2="348" y2="56" marker-end="url(#archArrowHead3)"/>
+            <rect class="arch-node-box arch-accent2" x="350" y="35" width="150" height="42" rx="8"/>
+            <text class="arch-node-text" x="425" y="52" text-anchor="middle">Contrastive</text>
+            <text class="arch-node-text" x="425" y="66" text-anchor="middle">Pretraining</text>
+            <line class="arch-arrow" x1="500" y1="56" x2="538" y2="56" marker-end="url(#archArrowHead3)"/>
+            <rect class="arch-node-box" x="540" y="35" width="150" height="42" rx="8"/>
+            <text class="arch-node-text" x="615" y="52" text-anchor="middle">PyTorch Encoder</text>
+            <text class="arch-node-text" x="615" y="66" text-anchor="middle">→ OCR Output</text>
+          </svg>
+          </div>
+          </div></div>
           <div class="pc-tags"><span>Python</span><span>PyTorch</span><span>OpenCV</span><span>Contrastive Loss</span></div>
         </div>
 
@@ -704,6 +809,31 @@ footer{border-top:1px solid var(--border); padding:44px 0 30px;}
             <li>Intuitive navigation with modern design patterns</li>
             <li>Automated static deployment on GitHub Pages</li>
           </ul>
+          <button class="arch-toggle" data-target="arch-portfolio" aria-expanded="false">
+            <span class="arch-label">View architecture</span> <span class="arch-caret">▾</span>
+          </button>
+          <div class="arch-wrap" id="arch-portfolio"><div class="arch-inner">
+          <div class="arch-diagram">
+          <svg viewBox="0 0 700 110" role="img" aria-label="The static site builds, deploys to GitHub Pages, is delivered via CDN, and renders in the browser." xmlns="http://www.w3.org/2000/svg">
+            <defs><marker id="archArrowHead4" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arch-arrowhead" d="M0,0 L10,5 L0,10 Z"/></marker></defs>
+            <rect class="arch-node-box" x="10" y="35" width="140" height="42" rx="8"/>
+            <text class="arch-node-text" x="80" y="52" text-anchor="middle">Static Site</text>
+            <text class="arch-node-text" x="80" y="66" text-anchor="middle">Build</text>
+            <line class="arch-arrow" x1="150" y1="56" x2="188" y2="56" marker-end="url(#archArrowHead4)"/>
+            <rect class="arch-node-box arch-accent2" x="190" y="35" width="150" height="42" rx="8"/>
+            <text class="arch-node-text" x="265" y="52" text-anchor="middle">GitHub Pages</text>
+            <text class="arch-node-text" x="265" y="66" text-anchor="middle">Deploy</text>
+            <line class="arch-arrow" x1="340" y1="56" x2="378" y2="56" marker-end="url(#archArrowHead4)"/>
+            <rect class="arch-node-box" x="380" y="35" width="130" height="42" rx="8"/>
+            <text class="arch-node-text" x="445" y="52" text-anchor="middle">CDN</text>
+            <text class="arch-node-text" x="445" y="66" text-anchor="middle">Delivery</text>
+            <line class="arch-arrow" x1="510" y1="56" x2="548" y2="56" marker-end="url(#archArrowHead4)"/>
+            <rect class="arch-node-box" x="550" y="35" width="140" height="42" rx="8"/>
+            <text class="arch-node-text" x="620" y="52" text-anchor="middle">Browser</text>
+            <text class="arch-node-text" x="620" y="66" text-anchor="middle">Render</text>
+          </svg>
+          </div>
+          </div></div>
           <div class="pc-tags"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>GitHub Pages</span></div>
         </div>
 
@@ -934,6 +1064,17 @@ document.getElementById('contactForm').addEventListener('submit', function(e){
     document.body.classList.remove('custom-cursor-active');
   }
 })();
+
+// ---------- Architecture diagram toggles ----------
+document.querySelectorAll('.arch-toggle').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const wrap = document.getElementById(btn.dataset.target);
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!expanded));
+    wrap.classList.toggle('open');
+    btn.querySelector('.arch-label').textContent = expanded ? 'View architecture' : 'Hide architecture';
+  });
+});
 </script>
 </body>
 </html>
